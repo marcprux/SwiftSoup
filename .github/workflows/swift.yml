@@ -26,6 +26,6 @@ jobs:
     - name: Run tests
       run: swift test -v
     - name: Android tests
-      if: ${{ matrix.os == "ubuntu-22.04" }}
+      if: ${{ matrix.os == 'ubuntu-22.04' }}
       uses: skiptools/swift-android-action@v2
 
