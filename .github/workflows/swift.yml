@@ -1,7 +1,5 @@
 name: Swift
 
-
-
 on:
   push:
     branches: [ "master" ]
@@ -14,7 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-22.04, macos-latest]
-        swift: ["5", "5.9"]
+        swift: ["5.9", "6.0"]
         
     runs-on: ${{ matrix.os }}
 
@@ -27,3 +25,7 @@ jobs:
       run: swift build -v
     - name: Run tests
       run: swift test -v
+    - name: Android tests
+      if: ${{ matrix.os == 'ubuntu-22.04' && matrix.swift == '6.0' }}
+      uses: skiptools/swift-android-action@v2
+
